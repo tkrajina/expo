@@ -30,4 +30,9 @@
                 resolver:(UMPromiseResolveBlock)resolve
                 rejecter:(UMPromiseRejectBlock)reject;
 
+typedef void (^SampleBufferCallback)(AVAudioPCMBuffer * _Nonnull buffer);
+
+- (void)addSampleBufferCallback:(SampleBufferCallback)callback;
+- (void)removeSampleBufferCallback;
+
 @end

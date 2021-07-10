@@ -162,4 +162,46 @@ extension AnyModule {
       closure
     )
   }
+
+  /**
+   Creates module's lifecycle listener that is called right after module initialization.
+   */
+  public func onCreate(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.moduleCreate, closure)
+  }
+
+  /**
+   Creates module's lifecycle listener that is called when the module is about to be deallocated.
+   */
+  public func onDestroy(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.moduleDestroy, closure)
+  }
+
+  /**
+   Creates module's lifecycle listener that is called when the app context owning the module is about to be deallocated.
+   */
+  public func onAppContextDestroy(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.appContextDestroy, closure)
+  }
+
+  /**
+   Creates a listener that is called when the client app is about to enter the foreground mode.
+   */
+  public func onClientAppEnterForeground(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.clientAppEnterForeground, closure)
+  }
+
+  /**
+   Creates a listener that is called when the client app becomes active again.
+   */
+  public func onClientAppBecomeActive(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.clientAppBecomeActive, closure)
+  }
+
+  /**
+   Creates a listener that is called when the client app enters the background mode.
+   */
+  public func onClientAppEnterBackground(_ closure: @escaping () -> Void) -> AnyDefinition {
+    return EventListener(.clientAppEnterBackground, closure)
+  }
 }

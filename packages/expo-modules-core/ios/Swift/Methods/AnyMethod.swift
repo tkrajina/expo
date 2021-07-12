@@ -21,5 +21,8 @@ public protocol AnyMethod: AnyDefinition {
   /**
    Calls the method with given arguments and a promise.
    */
-  func call(args: [Any?], promise: Promise) -> Void
+  @inline(__always) func call(args: [Any?], promise: Promise) -> Void
+
+  func call<T>(args: [Any?], promise: Promise, type: T.Type)
+  func call<T>(args: [Any?], promise: Promise, type: T.Type) where T: RawRepresentable
 }
